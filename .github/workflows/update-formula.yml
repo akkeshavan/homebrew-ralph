@@ -25,7 +25,7 @@ jobs:
       - name: Download checksums
         run: |
           curl -fsSL \
-            "https://github.com/akkeshavan/ralph/releases/download/${{ steps.ver.outputs.VERSION }}/checksums.txt" \
+            "https://github.com/akkeshavan/ralph-releases/releases/download/${{ steps.ver.outputs.VERSION }}/checksums.txt" \
             -o checksums.txt
           cat checksums.txt
 
