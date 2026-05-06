@@ -1,26 +1,26 @@
 class Ralph < Formula
-  desc "Agentic code generation CLI powered by multiple LLM backends"
-  homepage "https://github.com/akkeshavan/ralph"
-  version "0.2.0"
+  desc "Agentic code generation CLI powered by DeepSeek"
+  homepage "https://akkeshavan.github.io/ralph-releases/"
+  version "0.2.1"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
-      url "https://github.com/akkeshavan/ralph/releases/download/v#{version}/ralph-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "1b6e485395140ed6e009dff7d5a06a5f501c1e1113ab3ea8a71f18b8e05127ad"
+      url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-apple-darwin.tar.gz"
+      sha256 "335e99ebb6c404c97a4cbaa5bed7257d225a02d65c9859b3aa374bf68b3c5671"
     else
-      url "https://github.com/akkeshavan/ralph/releases/download/v#{version}/ralph-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "b41cdcb0cdb2cb95a189acad49213294a422972dcdbb7fb7fe3fdf0512f7b517"
+      url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-apple-darwin.tar.gz"
+      sha256 "fbdb28872d6f4dc06c449cbb9213bb655d13fbfb032ce7887db8f2fb8664c29d"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
-      url "https://github.com/akkeshavan/ralph/releases/download/v#{version}/ralph-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "7aedead458ca9916d116c6533a541a2343bf8a5b41fc434d2d357d5b053554bd"
+      url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "aa8a51140241962df722f04b8eaec1cb1daf87ed0feafd740d3fc08dc5b56cab"
     else
-      url "https://github.com/akkeshavan/ralph/releases/download/v#{version}/ralph-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "dbf95a1f4af90babcd6f07eda01858b0e477ea6ea81519cc79da4dbe48d471c1"
+      url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "df36efefe9b04fe5f006426609fdfbb2db793d72780c33bbb8a7a3d167872b5d"
     end
   end
 
