@@ -1,26 +1,26 @@
 class Ralph < Formula
   desc "Agentic code generation CLI powered by DeepSeek"
   homepage "https://akkeshavan.github.io/ralph-releases/"
-  version "0.2.1"
+  version "0.3.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "335e99ebb6c404c97a4cbaa5bed7257d225a02d65c9859b3aa374bf68b3c5671"
+      sha256 "cd987d267f170cb6c1642251c456c492b0456f90b1e8339b2873a1c91498f4d9"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "fbdb28872d6f4dc06c449cbb9213bb655d13fbfb032ce7887db8f2fb8664c29d"
+      sha256 "aa0d8355fdc0be6d0f28acb56f56a43adeffef9a5725977bddce23579a4b2728"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "aa8a51140241962df722f04b8eaec1cb1daf87ed0feafd740d3fc08dc5b56cab"
+      sha256 "f965e7576e688cfdf2ade4b0ee631de1b17a256d382b84718257827831504c49"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "df36efefe9b04fe5f006426609fdfbb2db793d72780c33bbb8a7a3d167872b5d"
+      sha256 "5f1338a8e50b292b487b0907f9d86b989057adef8020c449500226cd1d206db3"
     end
   end
 
