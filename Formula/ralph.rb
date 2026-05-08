@@ -1,6 +1,6 @@
 class Ralph < Formula
-  desc "Agentic code generation CLI powered by DeepSeek"
-  homepage "https://akkeshavan.github.io/ralph-releases/"
+  desc "Agentic coding CLI — managed via Ralphy backend or bring your own API key"
+  homepage "https://ralphy.vellur.in/download"
   version "0.4.0"
   license "MIT"
 
