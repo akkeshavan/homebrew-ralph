@@ -1,26 +1,26 @@
 class Ralph < Formula
   desc "Agentic coding CLI — managed via Ralphy backend or bring your own API key"
   homepage "https://ralphy.vellur.in/download"
-  version "0.5.9"
+  version "0.5.10"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "dc813e932b4e51e6f3ffd69cf6fb21292a260a468dfd7d5b321c11814c34843d"
+      sha256 "155973893df44cece073ce67c7106dcf69f92d31dfbaed8d5b33a7461fbf272d"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "7b6d024ef9187910e961a520e6b008f7fb3083a9d5c7cbbc1e40764f0c95f95c"
+      sha256 "22490ae5c10f0235f2d5a618d9585ee2dca00ebbba9ca02f91b6c330124b867a"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "c3f344be3dc8484e9dad4624f0e1c0b19f0de5ad746dd0fb7b32059eabc76bcb"
+      sha256 "b151734ed991502f08e748c8ebeefa56fdbf3c36846d8d9a3e00241d8f62db2d"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/v#{version}/ralph-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "5f99d737257f4d9921f4fd818ec04d2e78b276d7038983605733251670237854"
+      sha256 "4a6561fee859b3ecd95d6b549019c1c9a49b01fe426271ad1abafb50566a6547"
     end
   end
 
