@@ -1,0 +1,58 @@
+name: Update Ralph Plus Formula
+
+on:
+  repository_dispatch:
+    types: [new-plus-release]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version tag (e.g. plus-v0.2.0)"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get version
+        id: ver
+        run: |
+          VERSION="${{ github.event.client_payload.version || github.event.inputs.version }}"
+          echo "VERSION=${VERSION}" >> $GITHUB_OUTPUT
+          # Strip "plus-v" prefix to get the numeric version (e.g. 0.1.1)
+          echo "VERSION_NUM=${VERSION#plus-v}" >> $GITHUB_OUTPUT
+
+      - name: Download checksums
+        run: |
+          curl -fsSL             "https://github.com/akkeshavan/ralph-releases/releases/download/${{ steps.ver.outputs.VERSION }}/checksums.txt"             -o checksums.txt
+          cat checksums.txt
+
+      - name: Extract SHA256 values
+        id: sha
+        run: |
+          echo "AARCH64_DARWIN=$(grep 'aarch64-apple-darwin' checksums.txt | awk '{print $1}')" >> $GITHUB_OUTPUT
+          echo "X86_64_DARWIN=$(grep 'x86_64-apple-darwin' checksums.txt | awk '{print $1}')" >> $GITHUB_OUTPUT
+          echo "AARCH64_LINUX=$(grep 'aarch64-unknown-linux-gnu' checksums.txt | awk '{print $1}')" >> $GITHUB_OUTPUT
+          echo "X86_64_LINUX=$(grep 'x86_64-unknown-linux-gnu' checksums.txt | awk '{print $1}')" >> $GITHUB_OUTPUT
+
+      - name: Update formula
+        run: |
+          V="${{ steps.ver.outputs.VERSION_NUM }}"
+          sed -i "s/version \".*\"/version \"${V}\"/" Formula/ralph-plus.rb
+          sed -i "/aarch64-apple-darwin/{n;s/sha256 \".*\"/sha256 \"${{ steps.sha.outputs.AARCH64_DARWIN }}\"/}" Formula/ralph-plus.rb
+          sed -i "/x86_64-apple-darwin/{n;s/sha256 \".*\"/sha256 \"${{ steps.sha.outputs.X86_64_DARWIN }}\"/}" Formula/ralph-plus.rb
+          sed -i "/aarch64-unknown-linux-gnu/{n;s/sha256 \".*\"/sha256 \"${{ steps.sha.outputs.AARCH64_LINUX }}\"/}" Formula/ralph-plus.rb
+          sed -i "/x86_64-unknown-linux-gnu/{n;s/sha256 \".*\"/sha256 \"${{ steps.sha.outputs.X86_64_LINUX }}\"/}" Formula/ralph-plus.rb
+          cat Formula/ralph-plus.rb
+
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Formula/ralph-plus.rb
+          git commit -m "chore: update ralph-plus to ${{ steps.ver.outputs.VERSION }}"
+          git push
