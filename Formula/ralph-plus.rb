@@ -1,26 +1,26 @@
 class RalphPlus < Formula
   desc "Ralph Plus — agentic coding CLI with Brain memory system (experimental)"
   homepage "https://ralphy-server.fly.dev/ralph-plus"
-  version "0.1.2"
+  version "0.2.0"
   license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/plus-v#{version}/ralph-plus-plus-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "16918a11a7adeefe66d1ceaf34316a0921bc75072afe1ed874e0a59c20f66e20"
+      sha256 "2d07d092f292effe9c620cd53efbfe0b027930889a10cb87be26c1ff2fecdffb"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/plus-v#{version}/ralph-plus-plus-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "1331a7ac46255e3c7c880e7534d35c1ccab3fcb49706c43a0bd5c2a50f84512f"
+      sha256 "45fcdfbf0958f1cb87afcdeb2b2f7f99e93c797e21f7045a17b78f44d5be6bef"
     end
   end
 
   on_linux do
     if Hardware::CPU.arm?
       url "https://github.com/akkeshavan/ralph-releases/releases/download/plus-v#{version}/ralph-plus-plus-v#{version}-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "66992454fe8d1e612bcadf5e39d0481670fadf3434904de39bcc3e1dff0195b4"
+      sha256 "c7bdc20dedcd3d8dc8c56c84e59ffffff778c0f9023bbed1d0a668d99204355b"
     else
       url "https://github.com/akkeshavan/ralph-releases/releases/download/plus-v#{version}/ralph-plus-plus-v#{version}-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "a868e4c2139c125a3e8522a8606c7617787b717b901237f7e6cace860bea1344"
+      sha256 "70f5a3951c2deb63312862b546265ee700ac82f74d73f9b90cec6e96e83332d1"
     end
   end
 
